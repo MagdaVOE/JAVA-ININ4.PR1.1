@@ -7,7 +7,7 @@ public class Human {
     String sex;
     Integer age;
     Animal pet;
-    Car car;
+    private Car car;
     Phone mobilePhone;
     private Double salary;
 
@@ -15,7 +15,6 @@ public class Human {
 
     private Date SalaryDate;
     private Double previousSalary;
-
 
 
 
@@ -41,5 +40,21 @@ public class Human {
         }
 
 
+    }public Car getCar() {
+
+        return this.car;
+    }
+    public void setCar(Car car) {
+        if (this.salary > car.value) {
+            System.out.println("you bought it using cash, yeahhhh....");
+            this.car = car;
+        } else if (this.salary >= car.value / 12) {
+            System.out.println("you bought it using credit, but its ok");
+            this.car = car;
+        } else {
+            System.out.println("Sorry buddy first ask for a rise or get a better job");
+        }
+
+        this.car = car;
     }
 }

@@ -20,6 +20,7 @@ public class Main {
 	cactus.producer="Citroen";
 	cactus.year=2015;
 	cactus.type="crossover";
+	cactus.value=20000.0;
 
 		Human me= new Human();
 	me.name="Magda";
@@ -27,14 +28,17 @@ public class Main {
 	me.sex="Female";
 	me.age=33;
 	me.mobilePhone=iphone;
-	me.car=cactus;
+
+
 
 		Double salary = me.getSalary();
 		me.setSalary(15000.0);
 
 		Double salary1 = me.getSalary();
-		me.setSalary(25000.0);
+		me.setSalary(10000.0);
 
+		Car car=me.getCar();
+		me.setCar(cactus);
 
 
 dog.feed();

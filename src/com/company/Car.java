@@ -5,6 +5,6 @@ public class Car {
     String producer;
     Integer year;
     String type;
-
+Double value;
 
 }
