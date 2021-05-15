@@ -29,7 +29,11 @@ public class Main {
 	me.mobilePhone=iphone;
 	me.car=cactus;
 
+		Double salary = me.getSalary();
+		me.setSalary(15000.0);
 
+		Double salary1 = me.getSalary();
+		me.setSalary(25000.0);
 
 
 
