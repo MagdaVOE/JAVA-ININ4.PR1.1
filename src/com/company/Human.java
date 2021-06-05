@@ -1,4 +1,7 @@
 package com.company;
+import devices.Car;
+import devices.Phone;
+
 import java.util.Date;
 
 public class Human {
@@ -10,6 +13,15 @@ public class Human {
     private Car car;
     Phone mobilePhone;
     private Double salary;
+
+    public Human(String name, String lastName, String sex, int age, Animal pet, Car car) {
+        this.name = name;
+        this.lastName = lastName;
+        this.sex = sex;
+        this.age = age;
+        this.pet = pet;
+        this.car = car;
+    }
 
 
 

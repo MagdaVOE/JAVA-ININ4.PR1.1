@@ -1,8 +1,12 @@
 package com.company;
 
+import devices.Car;
+import devices.Phone;
+
 public class Main {
 
     public static void main(String[] args) {
+
 	Animal dog = new Animal( "canine");
 	dog.name = "Szarik";
 
@@ -11,24 +15,19 @@ public class Main {
 	System.out.println("dog name =" + dog.name);
 
 
-	Phone iphone= new Phone();
-	iphone.producer ="apple";
-	iphone.model="6s";
 
-	Car cactus = new Car();
-	cactus.model=" C4 cactus";
-	cactus.producer="Citroen";
-	cactus.year=2015;
-	cactus.type="crossover";
-	cactus.value=20000.0;
+	Phone samsung= new Phone("Samsung","Galaxy","Android",123.4);
 
-		Human me= new Human();
-	me.name="Magda";
-	me.lastName="Voelker";
-	me.sex="Female";
-	me.age=33;
-	me.mobilePhone=iphone;
 
+
+	Car cactus = new Car("C4 cactus", "Citroen",2017, "crossover", 20000.0);
+	Car cactus2 = new Car("C4 cactus", "Citroen",2017, "crossover", 20000.0);
+
+
+		System.out.println("Comparison:"+cactus.equals(cactus2));
+
+
+ Human me=new Human("Magda", "Voelker", "Female",33,dog, cactus);
 
 
 		Double salary = me.getSalary();
@@ -45,8 +44,14 @@ dog.feed();
 cat.takeForAWalk();
 cat.takeForAWalk();
 		cat.takeForAWalk();
-String version = iphone.getOSVersion();
+String version = samsung.getOSVersion();
 
-System.out.println(iphone.getOSVersion());
-    }
+System.out.println(samsung.getOSVersion());
+
+		System.out.println(me);
+		System.out.println(cactus);
+		System.out.println(cactus2);
+
+
+		}
 }

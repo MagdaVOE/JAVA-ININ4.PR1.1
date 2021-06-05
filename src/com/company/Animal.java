@@ -7,6 +7,12 @@ import java.io.File;
    final public String species;
     File pic;
 
+    public Animal(String name, Double weight, String species){
+        this.name=name;
+        this.weight=weight;
+        this.species=species;
+    }
+
     static final public Double DEFAULT_ANIMAL_WEIGHT =1.0;
 
     Animal(String species){
