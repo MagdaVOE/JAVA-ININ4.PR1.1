@@ -16,12 +16,12 @@ public class Main {
 
 
 
-	Phone samsung= new Phone("Samsung","Galaxy","Android",123.4);
+	Phone samsung= new Phone("Android","galaxy",2010,"Android", 12.3);
 
 
 
-	Car cactus = new Car("C4 cactus", "Citroen",2017, "crossover", 20000.0);
-	Car cactus2 = new Car("C4 cactus", "Citroen",2017, "crossover", 20000.0);
+	Car cactus = new Car("C4 cactus", "Citroen",2017,"crossover",20000.0);
+	Car cactus2 = new Car("C4 cactus", "Citroen",2017,"crossover",20000.0);
 
 
 		System.out.println("Comparison:"+cactus.equals(cactus2));
@@ -52,6 +52,12 @@ System.out.println(samsung.getOSVersion());
 		System.out.println(cactus);
 		System.out.println(cactus2);
 
+System.out.println(me);
+System.out.println(dog);
+System.out.println(cactus);
+System.out.println(samsung);
 
+samsung.turnOn();
+cactus.turnOn();
 		}
 }

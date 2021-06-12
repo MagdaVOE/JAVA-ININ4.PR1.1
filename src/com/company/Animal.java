@@ -32,6 +32,12 @@ import java.io.File;
             if (this.weight==0.0){
                 System.out.println("Good job buddy, now it's dead ");}
         }
+     @Override
+     public String toString(){
+         return "Animal{"+
+                 "name=" +name+'\''+
+                 ", weight=" +weight +'\'' +
+                 "'species = "+ species+"}";}
 
      }
 

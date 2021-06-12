@@ -69,4 +69,13 @@ public class Human {
 
         this.car = car;
     }
+    @Override
+    public String toString(){
+        return "Human{"+
+                "name=" +name+'\''+
+                ", Last name= " +lastName +'\'' +
+                ",sex = "+ sex+ '\''+
+                ",age= " +age+'\''+
+        ", pet = " +pet +'\'' +
+                ", car = "+ car +"}";}
 }
