@@ -40,6 +40,9 @@ public class Phone extends Device implements sellable {
                 seller.mobilePhone=null;
                 System.out.println("transaction went great and everybody is happy now..... Shiny happy people laughing ");
             }
+            else {
+                System.out.println("you are too poor, go get better job");
+            }
 
         }
 

@@ -41,6 +41,9 @@ public class Car extends Device implements sellable {
                 seller.car=null;
                 System.out.println("transaction went great and everybody is happy now..... Shiny happy people laughing ");
             }
+            else {
+                System.out.println("you are too poor, go get better job");
+            }
         }
 
     }
