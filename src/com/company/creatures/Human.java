@@ -1,4 +1,4 @@
-package com.company;
+package com.company.creatures;
 import devices.Car;
 import devices.Phone;
 
@@ -83,4 +83,9 @@ public class Human extends Animal{
                 ",age= " +age+'\''+
         ", pet = " +pet +'\'' +
                 ", car = "+ car +"}";}
+
+    @Override
+    public void feed(double foodWeight) {
+
+    }
 }

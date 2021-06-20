@@ -1,5 +1,9 @@
 package com.company;
 
+import com.company.creatures.Animal;
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Pet;
+import com.company.creatures.Human;
 import devices.Car;
 import devices.Phone;
 
@@ -7,10 +11,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-	Animal dog = new Animal( "canine");
+	Pet dog = new Pet( "canine");
 	dog.name = "Szarik";
 
-	Animal cat= new Animal("feline");
+	Pet cat= new Pet("feline");
 	cat.name="puszek";
 	System.out.println("dog name =" + dog.name);
 

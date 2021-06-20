@@ -1,10 +1,11 @@
-package com.company;
+package com.company.creatures;
 
-import javax.swing.*;
+import com.company.sellable;
+
 import java.io.File;
- public class Animal implements sellable {
+ public abstract class Animal implements sellable, Feedable {
     public String name;
-   private Double weight;
+   public Double weight;
    final public String species;
     File pic;
 
@@ -16,7 +17,7 @@ import java.io.File;
 
     static final public Double DEFAULT_ANIMAL_WEIGHT =1.0;
 
-    Animal(String species){
+    public Animal(String species){
         this.species = species;
     switch(this.species){
         case"canine": this.weight=10.0;
@@ -25,10 +26,10 @@ import java.io.File;
     }
 
     }
-    void feed(){
+    public void feed(){
         this.weight+=1;
         System.out.println("thanks for food :D");}
-        void takeForAWalk(){
+        public void takeForAWalk(){
             this.weight-=1;
             if (this.weight==0.0){
                 System.out.println("Good job buddy, now it's dead ");}

@@ -1,6 +1,6 @@
 package devices;
 
-import com.company.Human;
+import com.company.creatures.Human;
 import com.company.sellable;
 
 public class Phone extends Device implements sellable {
