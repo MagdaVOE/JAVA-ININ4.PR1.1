@@ -4,23 +4,28 @@ import devices.Phone;
 
 import java.util.Date;
 
-public class Human {
-    String name;
-    String lastName;
-    String sex;
-    Integer age;
-    Animal pet;
-    private Car car;
-    Phone mobilePhone;
+public class Human extends Animal{
+   public String name;
+    public String lastName;
+   public String sex;
+    public Integer age;
+    public Animal pet;
+    public Car car;
+   public  Phone mobilePhone;
     private Double salary;
+    public Double cash;
 
-    public Human(String name, String lastName, String sex, int age, Animal pet, Car car) {
+    public Human( String name,String lastName, String sex, int age, Animal pet, Car car, Phone mobilePhone, Double salary, Double cash) {
+        super(name);
         this.name = name;
         this.lastName = lastName;
         this.sex = sex;
         this.age = age;
         this.pet = pet;
         this.car = car;
+        this.mobilePhone=mobilePhone;
+        this.salary=salary;
+        this.cash=cash;
     }
 
 

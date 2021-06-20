@@ -1,7 +1,8 @@
 package com.company;
 
+import javax.swing.*;
 import java.io.File;
- public class Animal {
+ public class Animal implements sellable {
     public String name;
    private Double weight;
    final public String species;
@@ -39,6 +40,38 @@ import java.io.File;
                  ", weight=" +weight +'\'' +
                  "'species = "+ species+"}";}
 
+
+
+
+
+
+     @Override
+     public void sell(Human seller, Human buyer, Double price) {
+         if(seller.pet != null){
+
+                 System.out.println(seller.name + " woohoo, own a pet <3");}
+             if(buyer.cash>price){
+                 System.out.println(buyer.name +", you've got enough cash, good job buddy :) ");
+                 buyer.cash-=price;
+                 seller.cash+=price;
+                 buyer.pet=seller.pet;
+                 seller.pet=null;
+                 System.out.println("transaction went great and everybody is happy now..... Shiny happy people laughing ");
+             }
+             else {
+                 System.out.println("you are too poor, go get better job");
+             }
+         }
+
+
+     @Override
+     public void sell() {
+         if (this instanceof Human){
+             System.out.println("You cant sell human, those days are over..... you dont have to sell your body through the night..... STING :D");}
+
      }
+
+ }
+
 
 

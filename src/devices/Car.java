@@ -1,6 +1,9 @@
 package devices;
 
-public class Car extends Device {
+import com.company.Human;
+import com.company.sellable;
+
+public class Car extends Device implements sellable {
     public String type;
    public  Double value;
 
@@ -21,4 +24,30 @@ public class Car extends Device {
 
 
     }
+
+
+
+
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if(seller.car != null){
+            System.out.println(seller.name + " woohoo, owns a car <3");
+            if(buyer.cash>price){
+                System.out.println(buyer.name +", you've got enough cash, good job buddy :) ");
+                buyer.cash-=price;
+                seller.cash+=price;
+                buyer.car=seller.car;
+                seller.car=null;
+                System.out.println("transaction went great and everybody is happy now..... Shiny happy people laughing ");
+            }
+        }
+
+    }
+
+    @Override
+    public void sell() {
+
+    }
+
 }
