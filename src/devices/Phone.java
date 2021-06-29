@@ -3,8 +3,16 @@ package devices;
 import com.company.creatures.Human;
 import com.company.sellable;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
 public class Phone extends Device implements sellable {
 
+    private static final String DEFAULT_APP_VERSION = "latest";
+    private static final String DEFAULT_APP_SERVER = "https://app.server.com";
+    private static final String DEFAULT_APP_PROTOCOL = "https";
+    private static final int DEFAULT_APP_PORT = 443;
     public String operatingSystem;
    public  Double screenSize;
 
@@ -50,6 +58,41 @@ public class Phone extends Device implements sellable {
 
     @Override
     public void sell() {
+
+    }
+    public void installAnApp(List<String> appNames){
+for (String appName : appNames){
+    installAnApp(appName);
+}
+    }
+
+    public void installAnApp(String appName){
+        this.installAnApp( appName, DEFAULT_APP_VERSION);
+    }
+    public void installAnApp(String appName, String version){
+        this.installAnApp( appName,version, DEFAULT_APP_SERVER);
+    }
+    public void installAnApp(String appName, String version, String address){
+        URL url = null;
+        try {
+            url = new URL(DEFAULT_APP_PROTOCOL, address, DEFAULT_APP_PORT, appName+"-" + version);
+            this.installAnApp(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void installAnApp(URL url){
+        System.out.println("checking disc space");
+        System.out.println(" checking parental control settings ");
+        System.out.println(" checking available cash");
+        System.out.println("pay service");
+        System.out.println("payment authorized");
+        System.out.println("downloading an app.. wait for it...wait for it..");
+        System.out.println("unzipping the app");
+        System.out.println(" installing an app... wait for it...");
+        System.out.println("error handling ");
+        System.out.println(" app successfully installed hooray :)"+ url.getFile());
 
     }
 }

@@ -3,7 +3,7 @@ package devices;
 import com.company.creatures.Human;
 import com.company.sellable;
 
-public class Car extends Device implements sellable {
+public abstract class Car extends Device implements sellable {
     public String type;
    public  Double value;
 
@@ -53,4 +53,5 @@ public class Car extends Device implements sellable {
 
     }
 
+    public abstract void refuel();
 }

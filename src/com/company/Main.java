@@ -5,6 +5,8 @@ import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
 import com.company.creatures.Human;
 import devices.Car;
+import devices.Diesel;
+import devices.Electric;
 import devices.Phone;
 
 public class Main {
@@ -24,8 +26,8 @@ public class Main {
 Phone iphone = new Phone("Apple", "11 pro", 2020,"iOS",10.0 );
 
 
-	Car cactus = new Car("C4 cactus", "Citroen",2017,"crossover",20000.0);
-	Car cactus2 = new Car("C4 cactus", "Citroen",2017,"crossover",20000.0);
+	Car cactus = new Diesel ("C4 cactus", "Citroen",2017,"crossover",20000.0);
+	Car cactus2 = new Electric("C4 cactus", "Citroen",2017,"crossover",20000.0);
 
 
 		System.out.println("Comparison:"+cactus.equals(cactus2));
