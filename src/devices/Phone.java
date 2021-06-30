@@ -2,7 +2,8 @@ package devices;
 
 import com.company.creatures.Human;
 import com.company.sellable;
-
+import java.util.Comparator;
+import java.util.ArrayList;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -15,7 +16,8 @@ public class Phone extends Device implements sellable {
     private static final int DEFAULT_APP_PORT = 443;
     public String operatingSystem;
    public  Double screenSize;
-
+    public List<Application> appsInstalled = new ArrayList<Application>();
+    public Human owner = null;
     public Phone(String producer, String model, Integer year,String operatingSystem, Double screenSize, Double value) {
         super(producer,model,year,value);
         this.screenSize=screenSize;
@@ -65,39 +67,103 @@ public class Phone extends Device implements sellable {
     public void sell() {
 
     }
-    public void installAnApp(List<String> appNames){
-for (String appName : appNames){
-    installAnApp(appName);
-}
-    }
+    public void installApp(Application app) {
+        if (owner != null) {
+            if (owner.cash > app.price) {
+                if (isThisAppInstalled(app) == false) {
+                    appsInstalled.add(app);
+                    owner.cash -= app.price;
 
-    public void installAnApp(String appName){
-        this.installAnApp( appName, DEFAULT_APP_VERSION);
-    }
-    public void installAnApp(String appName, String version){
-        this.installAnApp( appName,version, DEFAULT_APP_SERVER);
-    }
-    public void installAnApp(String appName, String version, String address){
-        URL url = null;
-        try {
-            url = new URL(DEFAULT_APP_PROTOCOL, address, DEFAULT_APP_PORT, appName+"-" + version);
-            this.installAnApp(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+                } else {
+                    System.out.println("App " + app.name + " is already installed");
+                }
+            } else {
+                System.out.println("you don't have enough cash, go get better job looser " + app.name);
+            }
+        } else {
+            System.out.println("Error: this phone doesn't have an owner  ");
         }
-
     }
-    public void installAnApp(URL url){
-        System.out.println("checking disc space");
-        System.out.println(" checking parental control settings ");
-        System.out.println(" checking available cash");
-        System.out.println("pay service");
-        System.out.println("payment authorized");
-        System.out.println("downloading an app.. wait for it...wait for it..");
-        System.out.println("unzipping the app");
-        System.out.println(" installing an app... wait for it...");
-        System.out.println("error handling ");
-        System.out.println(" app successfully installed hooray :)"+ url.getFile());
 
+    public boolean isThisAppInstalled(Application app){
+        return appsInstalled.contains(app);
     }
+
+    public boolean isThisAppInstalled(String name){
+        for (int i =0; i<appsInstalled.size();i++){
+            if ( name.equals(appsInstalled.get(i).name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double valueOfAllApps(){
+        double a = 0.;
+        for (int i =0; i<appsInstalled.size();i++){
+            a += appsInstalled.get(i).price;
+        }
+        return a;
+    }
+
+    public void listAllFreeApps(){
+        System.out.println("\nList of installed free apps:");
+        for (int i =0; i<appsInstalled.size();i++){
+            if (appsInstalled.get(i).price == 0.){
+                System.out.println(appsInstalled.get(i).toString());
+            }
+        }
+    }
+
+    public void listAllAppsAlphabetical(){
+        System.out.println("\nAlpabetical list of apps:");
+        List<Application> temp = appsInstalled;
+        Comparator<Application> Lambda = (app1,app2) -> app1.name.compareTo(app2.name);
+        temp.sort(Lambda);
+        System.out.println(temp);
+    }
+
+    public void listAllAppsSortedByPrice(){
+        System.out.println("\nPrice sorted apps:");
+        List<Application> temp = appsInstalled;
+        Comparator<Application> Lambda = (app1,app2) -> app1.price.compareTo(app2.price);
+        temp.sort(Lambda);
+        System.out.println(temp);
+    }
+
+    //  public void installAnApp(List<String> appNames){
+//for (String appName : appNames){
+  //  installAnApp(appName);
+//}
+   // }
+
+  //  public void installAnApp(String appName){
+    //    this.installAnApp( appName, DEFAULT_APP_VERSION);
+   // }
+   // public void installAnApp(String appName, String version){
+     //   this.installAnApp( appName,version, DEFAULT_APP_SERVER);
+    //}
+    //public void installAnApp(String appName, String version, String address){
+      //  URL url = null;
+        //try {
+          //  url = new URL(DEFAULT_APP_PROTOCOL, address, DEFAULT_APP_PORT, appName+"-" + version);
+            //this.installAnApp(url);
+       // } catch (MalformedURLException e) {
+         //   e.printStackTrace();
+        //}
+
+    //}
+    //public void installAnApp(URL url){
+      //  System.out.println("checking disc space");
+        //System.out.println(" checking parental control settings ");
+      //  System.out.println(" checking available cash");
+      //  System.out.println("pay service");
+       // System.out.println("payment authorized");
+        //System.out.println("downloading an app.. wait for it...wait for it..");
+       // System.out.println("unzipping the app");
+       // System.out.println(" installing an app... wait for it...");
+       // System.out.println("error handling ");
+       // System.out.println(" app successfully installed hooray :)"+ url.getFile());
+
+    //}
 }

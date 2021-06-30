@@ -55,25 +55,25 @@ Phone iphone = new Phone("Apple", "11 pro", 2020,"iOS",10.0 , 1200.0);
 
 		//Car car=me.getCar();
 		//me.setCar(cactus);
-		me.setCar(cactus, 0);
-		me.setCar(cactus2, 1);
-		me.setCar(cactus3, 2);
+		//me.setCar(cactus, 0);
+	//	me.setCar(cactus2, 1);
+	//	me.setCar(cactus3, 2);
 
-		System.out.println("My cars are worth:"+me.getCarsValue());
-
-
-
-		System.out.println(me.getCar(0));
-		System.out.println(me.getCar(1));
-		System.out.println(me.getCar(2));
+		//System.out.println("My cars are worth:"+me.getCarsValue());
 
 
-		List<Car> cars = new LinkedList<Car>();
-		cars.add(cactus);
-		cars.add(cactus2);
-		cars.add(cactus2);
-		cars.add(cactus3);
-		cars.addAll(Arrays.asList(me.getGarage()));
+
+		//System.out.println(me.getCar(0));
+		//System.out.println(me.getCar(1));
+		//System.out.println(me.getCar(2));
+
+
+	//	List<Car> cars = new LinkedList<Car>();
+		//cars.add(cactus);
+	//	cars.add(cactus2);
+	//	cars.add(cactus2);
+	//	cars.add(cactus3);
+		//cars.addAll(Arrays.asList(me.getGarage()));
 
 		//System.out.println(cars.get(2));
 		//System.out.println(cars.size());
@@ -81,33 +81,63 @@ Phone iphone = new Phone("Apple", "11 pro", 2020,"iOS",10.0 , 1200.0);
 
 
 
-		me.getCar(0).sell(me,
-				Chandler,
-				10.0);
+	//	me.getCar(0).sell(me,
+				//Chandler,
+				//10.0);
 
 
-		System.out.println(cactus.owners);
+		//System.out.println(cactus.owners);
 
-		Human Monica = new Human();
-		Monica.name = "Monica";
-		Monica.lastName = "Bing";
-		Monica.pet = new Pet("dog");
-		Monica.pet.name = "Major";
-		Monica.setSalary(17000.0);
+		//Human Monica = new Human();
+		//Monica.name = "Monica";
+	//Monica.lastName = "Bing";
+	//	Monica.pet = new Pet("dog");
+	//	Monica.pet.name = "Major";
+	//	Monica.setSalary(17000.0);
 
-		me.getCar(1).sell(me, Monica, 200.0);
+	//	me.getCar(1).sell(me, Monica, 200.0);
 
 
-		Human Phoebe= new Human(3);
-		Phoebe.name = "Phoebe";
-		Phoebe.lastName = "Buffe";
-		Phoebe.pet = new Pet("Cat");
-		Phoebe.pet.name="Smelly Cat";
-		Phoebe.setSalary(6000.0);
+		//Human Phoebe= new Human(3);
+		//Phoebe.name = "Phoebe";
+		//Phoebe.lastName = "Buffe";
+		//Phoebe.pet = new Pet("Cat");
+		//Phoebe.pet.name="Smelly Cat";
+		//Phoebe.setSalary(6000.0);
 
-		Monica.getCar(0).sell(Monica, Phoebe, 1.0);
+	//	Monica.getCar(0).sell(Monica, Phoebe, 1.0);
 
-		System.out.println("Cars owners: "+cactus.owners);
+		//System.out.println("Cars owners: "+cactus.owners);
+
+
+		me.mobilePhone = samsung;
+		samsung.owner = me;
+		me.cash = 700.;
+
+		Application YTMusic = new Application("YTMusic", "2.0", 0.);
+		Application Instagram = new Application("Instagram", "4.5", 0.);
+		Application Facebook = new Application("Facebook", "2.2", 14.);
+		Application MiFit = new Application("MiFit", "11.9", 9.);
+		Application Netflix = new Application("Netflix", "4.0", 10.);
+
+		samsung.installApp(YTMusic);
+		samsung.installApp(Instagram);
+		samsung.installApp(Facebook);
+		samsung.listAllAppsAlphabetical();
+		samsung.listAllFreeApps();
+		System.out.println();
+
+		System.out.println("Is YTMusic installed: " + samsung.isThisAppInstalled(YTMusic));
+		System.out.println("Is Instagram installed: " + samsung.isThisAppInstalled(Instagram));
+		System.out.println("Is Netflix installed: " + samsung.isThisAppInstalled("Netflix"));
+		System.out.println();
+
+		samsung.installApp(Instagram);
+		samsung.installApp(Netflix);
+
+		samsung.listAllAppsSortedByPrice();
+		System.out.println();
+		System.out.println("Value of installed apps: " + samsung.valueOfAllApps());
 
 //dog.feed();
 //cat.takeForAWalk();
