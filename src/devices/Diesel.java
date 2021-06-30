@@ -1,5 +1,7 @@
 package devices;
 
+import com.company.creatures.Human;
+
 public class Diesel extends Car{
     public Diesel(String producer, String model, Integer year, String type, Double value) {
         super(producer, model, year, type, value);
@@ -8,5 +10,13 @@ public class Diesel extends Car{
     @Override
     public void refuel() {
         System.out.println("Im so expensive, you about to go broke, SAVE the EARTH ");
+    }
+
+
+
+
+    @Override
+    public void sell() {
+
     }
 }

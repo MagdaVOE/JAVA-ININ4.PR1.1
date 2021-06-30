@@ -1,4 +1,6 @@
 package devices;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.company.creatures.Human;
 import com.company.sellable;
@@ -6,11 +8,12 @@ import com.company.sellable;
 public abstract class Car extends Device implements sellable {
     public String type;
    public  Double value;
+    public List<Human> owners = new LinkedList<Human>();
 
 
 
     public Car(String producer, String model, Integer year, String type, Double value) {
-        super(producer, model, year);
+        super(producer, model, year, value);
         this.type = type;
         this.value = value;
     }
@@ -25,33 +28,34 @@ public abstract class Car extends Device implements sellable {
 
     }
 
-
-
-
-
-    @Override
-    public void sell(Human seller, Human buyer, Double price) {
-        if(seller.car != null){
-            System.out.println(seller.name + " woohoo, owns a car <3");
-            if(buyer.cash>price){
-                System.out.println(buyer.name +", you've got enough cash, good job buddy :) ");
-                buyer.cash-=price;
-                seller.cash+=price;
-                buyer.car=seller.car;
-                seller.car=null;
-                System.out.println("transaction went great and everybody is happy now..... Shiny happy people laughing ");
-            }
-            else {
-                System.out.println("you are too poor, go get better job");
-            }
-        }
-
-    }
+    public abstract void refuel();
 
     @Override
     public void sell() {
+        System.out.println("Car sold");
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return o.value.intValue() - this.value.intValue();
+    }
+
+    public void sell(Human seller, Human buyer, Double price) throws Exception {
+
+        if (buyer.couldBuyCar(this, price) && seller.hasCar(this)) {
+            buyer.setCar(this);
+            seller.removeCar(this);
+            buyer.cash -= price;
+            seller.cash += price;
+            System.out.println("transaction went great " + seller + " sold " + this + " to " + buyer);
+        }
+
 
     }
 
-    public abstract void refuel();
+
+
+
+   //public abstract void refuel();
 }
+

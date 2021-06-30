@@ -16,8 +16,8 @@ public class Phone extends Device implements sellable {
     public String operatingSystem;
    public  Double screenSize;
 
-    public Phone(String producer, String model, Integer year,String operatingSystem, Double screenSize) {
-        super(producer, model, year);
+    public Phone(String producer, String model, Integer year,String operatingSystem, Double screenSize, Double value) {
+        super(producer,model,year,value);
         this.screenSize=screenSize;
     }
 
@@ -34,6 +34,11 @@ public class Phone extends Device implements sellable {
         System.out.println("I SAID WAIT....");
         System.out.println("au... it's working :D :D :D :D");
 
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return 0;
     }
 
     @Override

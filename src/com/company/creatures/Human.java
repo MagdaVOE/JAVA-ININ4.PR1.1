@@ -1,7 +1,7 @@
 package com.company.creatures;
 import devices.Car;
 import devices.Phone;
-
+import java. util. Arrays;
 import java.util.Date;
 
 public class Human extends Animal{
@@ -10,24 +10,35 @@ public class Human extends Animal{
    public String sex;
     public Integer age;
     public Animal pet;
-    public Car car;
+    public Car[] garage = new Car[3];
    public  Phone mobilePhone;
     private Double salary;
     public Double cash;
 
-    public Human( String name,String lastName, String sex, int age, Animal pet, Car car, Phone mobilePhone, Double salary, Double cash) {
+
+    public Human(String name, String lastName, String sex, int age, Animal pet, Car[] garage, Phone mobilePhone, Double salary, Double cash) {
         super(name);
         this.name = name;
         this.lastName = lastName;
         this.sex = sex;
         this.age = age;
         this.pet = pet;
-        this.car = car;
+        this.garage = new Car[3];
         this.mobilePhone=mobilePhone;
         this.salary=salary;
         this.cash=cash;
     }
+    public Human() {
+        super("homo sapiens");
+        this.cash = 1000d;
+        this.garage = new Car[3];
+    }
 
+    public Human(Integer garage_size) {
+        super("homo sapiens");
+        this.cash = 1000d;
+        this.garage = new Car[garage_size];
+    }
 
 
     private Date SalaryDate;
@@ -57,23 +68,8 @@ public class Human extends Animal{
         }
 
 
-    }public Car getCar() {
-
-        return this.car;
     }
-    public void setCar(Car car) {
-        if (this.salary > car.value) {
-            System.out.println("you bought it using cash, yeahhhh....");
-            this.car = car;
-        } else if (this.salary >= car.value / 12) {
-            System.out.println("you bought it using credit, but its ok");
-            this.car = car;
-        } else {
-            System.out.println("Sorry buddy first ask for a rise or get a better job");
-        }
 
-        this.car = car;
-    }
     @Override
     public String toString(){
         return "Human{"+
@@ -82,10 +78,96 @@ public class Human extends Animal{
                 ",sex = "+ sex+ '\''+
                 ",age= " +age+'\''+
         ", pet = " +pet +'\'' +
-                ", car = "+ car +"}";}
+                ", car = "+ garage +"}";}
 
     @Override
     public void feed(double foodWeight) {
 
     }
+    public Car getCar(int carNumber) {
+        return garage[carNumber];
+    }
+
+
+    public void removeCar(Car newCar) throws Exception {
+        boolean success = false;
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == newCar) {
+                garage[i] = null;
+                success = true;
+                break;
+            }
+        }
+        if (!success) {
+            throw new Exception("sorry dude, i dont have that car");
+        }
+    }
+
+
+    public void setCar(Car newCar) throws Exception {
+        boolean success = false;
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == null) {
+                this.setCar(newCar, i);
+                success = true;
+                break;
+            }
+        }
+        if (!success) {
+            throw new Exception("no space in the garage");
+        }
+
+    }
+
+    public void setCar(Car car, int carNumber) throws Exception {
+        if (garage[carNumber] != null) {
+            throw new Exception("this spot is taken");
+        }
+
+        this.garage[carNumber] = car;
+        car.owners.add(this);
+    }
+
+    public Double getCarsValue() {
+        Double sum = 0.0;
+        for (Car car : garage) {
+            if (car != null) {
+                sum += car.value;
+            }
+        }
+        return sum;
+    }
+    public Car[] getGarage() {
+        return this.garage;
+    }
+
+    public boolean hasCar(Car newCar) {
+        boolean hasCar = false;
+        for (Car car : garage) {
+            if (car == newCar) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean couldBuyCar(Car newCar, Double price) throws Exception {
+        if (price > this.cash) {
+            throw new Exception("sorry, no enough money");
+        }
+        if (!this.hasFreePlaceInGarage()) {
+            throw new Exception("sorry, you dont have any space");
+        }
+        return true;
+    }
+
+    private boolean hasFreePlaceInGarage() {
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
