@@ -153,10 +153,10 @@ public class Human extends Animal{
 
     public boolean couldBuyCar(Car newCar, Double price) throws Exception {
         if (price > this.cash) {
-            throw new Exception("sorry, no enough money");
+            System.out.println("sorry, no enough money");
         }
         if (!this.hasFreePlaceInGarage()) {
-            throw new Exception("sorry, you dont have any space");
+            System.out.println("sorry, you dont have any space");
         }
         return true;
     }

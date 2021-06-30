@@ -88,7 +88,26 @@ Phone iphone = new Phone("Apple", "11 pro", 2020,"iOS",10.0 , 1200.0);
 
 		System.out.println(cactus.owners);
 
+		Human Monica = new Human();
+		Monica.name = "Monica";
+		Monica.lastName = "Bing";
+		Monica.pet = new Pet("dog");
+		Monica.pet.name = "Major";
+		Monica.setSalary(17000.0);
 
+		me.getCar(1).sell(me, Monica, 200.0);
+
+
+		Human Phoebe= new Human(3);
+		Phoebe.name = "Phoebe";
+		Phoebe.lastName = "Buffe";
+		Phoebe.pet = new Pet("Cat");
+		Phoebe.pet.name="Smelly Cat";
+		Phoebe.setSalary(6000.0);
+
+		Monica.getCar(0).sell(Monica, Phoebe, 1.0);
+
+		System.out.println("Cars owners: "+cactus.owners);
 
 //dog.feed();
 //cat.takeForAWalk();
